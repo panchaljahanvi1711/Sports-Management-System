@@ -1,0 +1,17 @@
+@startuml
+actor Administrator
+participant "SportsManager" as Manager
+participant "Sport" as Sport
+participant "sports_data.txt" as Data
+Administrator -> Manager: choose update sport
+Administrator -> Manager: enter sport ID
+Manager -> Sport: find sport by ID
+alt sport exists
+  Administrator -> Manager: select field and enter new value
+  Manager -> Sport: setName/setCoach/setVenue
+  Manager -> Data: saveData()
+  Manager --> Administrator: update successful
+else sport not found
+  Manager --> Administrator: "Sport not found"
+end
+@enduml

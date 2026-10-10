@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+actor Administrator
+rectangle "Sports Management System" {
+  usecase "Display sports" as UC1
+  usecase "Add sport" as UC2
+  usecase "Search sport" as UC3
+  usecase "Update sport" as UC4
+  usecase "Delete sport" as UC5
+  usecase "Register players" as UC6
+  usecase "Remove players" as UC7
+  usecase "Change venue" as UC8
+  usecase "View transaction history" as UC9
+  usecase "Save/load data" as UC10
+}
+Administrator --> UC1
+Administrator --> UC2
+Administrator --> UC3
+Administrator --> UC4
+Administrator --> UC5
+Administrator --> UC6
+Administrator --> UC7
+Administrator --> UC8
+Administrator --> UC9
+UC2 ..> UC10 : <<include>>
+UC4 ..> UC10 : <<include>>
+UC5 ..> UC10 : <<include>>
+UC6 ..> UC10 : <<include>>
+UC7 ..> UC10 : <<include>>
+UC8 ..> UC10 : <<include>>
+@enduml

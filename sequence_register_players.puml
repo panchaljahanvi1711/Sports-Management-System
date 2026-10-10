@@ -1,0 +1,18 @@
+@startuml
+actor Administrator
+participant "SportsManager" as Manager
+participant "Sport" as Sport
+participant "transactions.txt" as Log
+participant "sports_data.txt" as Data
+Administrator -> Manager: choose register players
+Administrator -> Manager: enter sport ID and count
+Manager -> Sport: find sport by ID
+alt sport exists and count > 0
+  Manager -> Sport: addPlayers(count)
+  Manager -> Log: append transaction record
+  Manager -> Data: saveData()
+  Manager --> Administrator: success + updated count
+else invalid sport/count
+  Manager --> Administrator: error message
+end
+@enduml

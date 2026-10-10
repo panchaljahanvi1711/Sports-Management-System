@@ -1,0 +1,59 @@
+@startuml
+abstract class Person {
+  # int id
+  # string name
+  + Person(int, string)
+  + virtual ~Person()
+  + virtual string role() = 0
+  + virtual void displayDetails()
+}
+class Coach {
+  - string specialty
+  + role() : string
+  + displayDetails() : void
+}
+class Player {
+  - int age
+  + role() : string
+  + displayDetails() : void
+}
+class Sport {
+  - int sportId
+  - string sportName
+  - string coachName
+  - int playerCount
+  - string venue
+  + addPlayers(int) : bool
+  + removePlayers(int) : bool
+  + display() : void
+}
+class Team {
+  - int teamId
+  - string teamName
+  - string sportName
+  + display() : void
+}
+class RegistrationTransaction {
+  - int transactionId
+  - int sportId
+  - int playersAdded
+  - string timestamp
+  + display() : void
+  + save(ofstream&) : void
+}
+class SportsManager {
+  - vector<unique_ptr<Sport>> sports
+  - vector<RegistrationTransaction> transactions
+  + addSport()
+  + searchSport()
+  + updateSport()
+  + deleteSport()
+  + addPlayersTransaction()
+  + loadData()
+  + saveData()
+}
+Person <|-- Coach
+Person <|-- Player
+SportsManager o-- "0..*" Sport
+SportsManager o-- "0..*" RegistrationTransaction
+@enduml
