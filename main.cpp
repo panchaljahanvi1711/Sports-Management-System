@@ -24,7 +24,6 @@ using namespace std;
 
 
 
-// Base class: demonstrates inheritance and runtime polymorphism.
 
 class Person {
 
@@ -128,7 +127,7 @@ public:
 
     }
 
-    ~Sport() = default; // Explicit destructor.
+    ~Sport() = default; 
 
     int getId() const { return sportId; }
 
@@ -267,7 +266,6 @@ public:
 
 
 
-// C++11-compatible replacements for std::quoted.
 static bool readQuoted(istream& in, string& value) {
     in >> ws;
     value.clear();
@@ -298,7 +296,7 @@ static void writeQuoted(ostream& out, const string& value) {
 
 class SportsManager {
 
-    // unique_ptr allocates records dynamically and automatically frees memory.
+    
 
     vector<unique_ptr<Sport>> sports;
 
@@ -362,7 +360,7 @@ public:
 
     SportsManager() = default;
 
-    ~SportsManager() { saveData(); } // Persist data when manager is destroyed.
+    ~SportsManager() { saveData(); } 
 
 
 
@@ -512,7 +510,7 @@ public:
 
             if (n == 0) {
 
-                // removePlayers(0) is intentionally invalid; count is already zero for an empty record.
+                
 
             }
 
@@ -534,8 +532,7 @@ public:
 
         if (it == sports.end()) { cout << "Sport not found.\n"; return; }
 
-        sports.erase(it); // unique_ptr frees the dynamically allocated Sport.
-
+        sports.erase(it); 
         saveData();
 
         cout << "Sport deleted successfully.\n";
@@ -614,8 +611,7 @@ public:
 
         Player player(2, "Sample Player", 20);
 
-        // Base-class pointers invoke derived implementations at runtime.
-
+      
         vector<unique_ptr<Person>> people;
 
         people.push_back(unique_ptr<Coach>(new Coach(coach)));
